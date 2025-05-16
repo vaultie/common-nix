@@ -1,0 +1,13 @@
+diff --git a/examples/nextjs/next.config.ts b/examples/nextjs/next.config.ts
+index e9ffa3083..bff4933b4 100644
+--- a/examples/nextjs/next.config.ts
++++ b/examples/nextjs/next.config.ts
+@@ -1,7 +1,7 @@
+ import type { NextConfig } from "next";
+ 
+ const nextConfig: NextConfig = {
+-  /* config options here */
++  output: "standalone"
+ };
+ 
+ export default nextConfig;
