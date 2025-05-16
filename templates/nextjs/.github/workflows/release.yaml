@@ -25,7 +25,6 @@ jobs:
       - name: Upload the Docker image
         run: |
           gcloud auth configure-docker ${{ vars.REGION }}-docker.pkg.dev
-          docker load < result
           docker image tag ${{ vars.NAME }}:latest ${{ vars.DOCKER_LOCATION }}/${{ vars.NAME }}:latest
           docker push ${{ vars.DOCKER_LOCATION }}/${{ vars.NAME }}:latest
       - name: Deploy on Google Cloud Run

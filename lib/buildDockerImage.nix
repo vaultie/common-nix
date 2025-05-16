@@ -14,7 +14,7 @@
 in
   nix2container.buildImage (
     lib.recursiveUpdate {
-      name = "${package.pname}-docker";
+      name = package.pname;
       tag = "latest";
       maxLayers = 122;
 
