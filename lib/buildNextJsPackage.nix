@@ -34,7 +34,7 @@
     "useImportNpmLock"
     "minimizeSwc"
     "removeSharpBinaries"
-    "packageSourceOverrides"
+    "packageOverrides"
   ];
 
   parseJSONFile = arg: name: let
