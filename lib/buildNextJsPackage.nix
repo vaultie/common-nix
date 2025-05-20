@@ -57,12 +57,10 @@
 
   normalizedLock = normalizeLock {
     inherit minimizeSwc removeSharpBinaries;
-
     packageLock = parsedPackageLock;
   };
 
-  packageSourceOverrides = normalizedLock.packageSourceOverrides
-    // packageOverrides;
+  packageSourceOverrides = normalizedLock.packageSourceOverrides // packageOverrides;
 
   importNpmLockArgs = optionalAttrs useImportNpmLock {
     inherit (importNpmLock) npmConfigHook;
