@@ -11,6 +11,7 @@
   src,
   distDir ? ".next",
   useImportNpmLock ? true,
+  packageOverrides ? {},
 
   # QoL configuration flags
   minimizeSwc ? true,
@@ -33,6 +34,7 @@
     "useImportNpmLock"
     "minimizeSwc"
     "removeSharpBinaries"
+    "packageSourceOverrides"
   ];
 
   parseJSONFile = arg: name: let
@@ -59,11 +61,14 @@
     packageLock = parsedPackageLock;
   };
 
+  packageSourceOverrides = normalizedLock.packageSourceOverrides
+    // packageOverrides;
+
   importNpmLockArgs = optionalAttrs useImportNpmLock {
     inherit (importNpmLock) npmConfigHook;
 
     npmDeps = importNpmLock {
-      inherit (normalizedLock) packageSourceOverrides;
+      inherit packageSourceOverrides;
 
       npmRoot = src;
     };
