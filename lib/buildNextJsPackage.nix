@@ -15,7 +15,8 @@
 
   # QoL configuration flags
   minimizeSwc ? true,
-  removeSharpBinaries ? true
+  removeSharpBinaries ? true,
+  ...
 } @ args: let
   inherit
     (builtins)
