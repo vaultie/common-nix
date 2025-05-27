@@ -1,21 +1,18 @@
 {
+  buildPlatform,
   inputs,
   lib,
   newScope,
-  stdenvNoCC,
 }:
-let
-  system = stdenvNoCC.hostPlatform.system;
-in
 lib.makeScope newScope (self: {
   inherit inputs;
 
-  nix2container = inputs.nix2container.packages.${system}.nix2container;
+  nix2container = inputs.nix2container.packages.${buildPlatform.system}.nix2container;
 
   mkSrc = self.callPackage ./lib/mkSrc.nix { };
   buildDockerImage = self.callPackage ./lib/buildDockerImage.nix { };
   buildNextJsPackage = self.callPackage ./lib/buildNextJsPackage.nix { };
-  normalizeLock = self.callPackage ./lib/normalizeLock.nix { };
+  normalizeLock = self.callPackage ./lib/normalizeLock { };
 
   postInstall = self.callPackage ./packages/postInstall.nix { };
 

@@ -13,10 +13,6 @@
   distDir ? ".next",
   useImportNpmLock ? true,
   packageOverrides ? { },
-
-  # QoL configuration flags
-  minimizeSwc ? true,
-  removeSharpBinaries ? true,
   ...
 }@args:
 let
@@ -34,8 +30,6 @@ let
     "packageJson"
     "packageLock"
     "useImportNpmLock"
-    "minimizeSwc"
-    "removeSharpBinaries"
     "packageOverrides"
   ];
 
@@ -58,7 +52,6 @@ let
   parsedPackageLock = parseJSONFile "packageLock" "package-lock.json";
 
   normalizedLock = normalizeLock {
-    inherit minimizeSwc removeSharpBinaries;
     packageLock = parsedPackageLock;
   };
 
