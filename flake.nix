@@ -12,13 +12,15 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    ...
-  } @ inputs:
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+      ...
+    }@inputs:
     flake-utils.lib.eachDefaultSystem (
-      system: let
+      system:
+      let
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -26,10 +28,10 @@
         scope = pkgs.callPackage ./scope.nix {
           inherit inputs;
         };
-      in {
+      in
+      {
         lib = {
-          inherit
-            (scope)
+          inherit (scope)
             buildDockerImage
             buildNextJsPackage
             mkSrc
@@ -44,7 +46,7 @@
           inherit (scope) test-nextjs-basic;
         };
 
-        formatter = pkgs.alejandra;
+        formatter = pkgs.nixfmt-tree;
       }
     )
     // {

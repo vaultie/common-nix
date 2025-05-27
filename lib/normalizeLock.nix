@@ -2,13 +2,14 @@
   emptyFile,
   lib,
   stdenvNoCC,
-}: {
+}:
+{
   packageLock,
   minimizeSwc,
   removeSharpBinaries,
-}: let
-  inherit
-    (lib)
+}:
+let
+  inherit (lib)
     listToAttrs
     nameValuePair
     optionalAttrs
@@ -37,9 +38,7 @@
   selectedSwc = supportedSystems.${stdenvNoCC.buildPlatform.system} or null;
 
   minimizedSwcBinaries =
-    if (selectedSwc != null)
-    then remove selectedSwc swcBinaries
-    else swcBinaries;
+    if (selectedSwc != null) then remove selectedSwc swcBinaries else swcBinaries;
 
   sharpBinaries = [
     "@img/sharp-darwin-arm64"
@@ -66,7 +65,8 @@
   droppedDependencies =
     optionals minimizeSwc minimizedSwcBinaries
     ++ optionals removeSharpBinaries sharpBinaries;
-in {
+in
+{
   packageSourceOverrides = listToAttrs (
     map (p: nameValuePair "node_modules/${p}" emptyFile) droppedDependencies
   );

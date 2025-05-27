@@ -4,7 +4,8 @@
   buildNextJsPackage,
   fetchFromGitHub,
   mkSrc,
-}: let
+}:
+let
   src = fetchFromGitHub {
     owner = "vercel";
     repo = "vercel";
@@ -27,6 +28,6 @@
     };
   };
 in
-  buildDockerImage {
-    inherit package;
-  }
+buildDockerImage {
+  inherit package;
+}

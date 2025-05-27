@@ -12,14 +12,16 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    common-nix,
-    flake-utils,
-    ...
-  }:
+  outputs =
+    {
+      nixpkgs,
+      common-nix,
+      flake-utils,
+      ...
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
+      system:
+      let
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -33,9 +35,10 @@
         default = commonLib.buildNextJsPackage {
           inherit src;
         };
-      in {
+      in
+      {
         devShells.default = pkgs.mkShell {
-          buildInputs = [pkgs.nodejs];
+          buildInputs = [ pkgs.nodejs ];
         };
 
         packages = {
