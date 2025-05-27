@@ -4,6 +4,7 @@
 }:
 let
   nixGitIgnore = writeText "nix-gitignore" ''
+
     # Nix
     /.direnv
     /result
