@@ -1,12 +1,8 @@
 {
-  cairo,
   buildNpmPackage,
   importNpmLock,
   lib,
   normalizeLock,
-  pango,
-  pkg-config,
-  pixman,
 }:
 {
   src,
@@ -80,14 +76,6 @@ buildNpmPackage (
 
     # .env is not available during the build process.
     SKIP_ENV_VALIDATION = true;
-
-    buildInputs = [
-      cairo
-      pango
-      pixman
-    ];
-
-    nativeBuildInputs = [ pkg-config ];
 
     installPhase =
       args.installPhase or ''
