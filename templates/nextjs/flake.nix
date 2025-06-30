@@ -52,7 +52,7 @@
           };
         };
 
-        formatter = pkgs.alejandra;
+        formatter = pkgs.nixfmt-tree;
       }
     );
 }

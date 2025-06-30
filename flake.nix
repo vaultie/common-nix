@@ -3,10 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix2container = {
       url = "github:nlewo/nix2container";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-filter.url = "github:numtide/nix-filter";
     flake-utils.url = "github:numtide/flake-utils";
